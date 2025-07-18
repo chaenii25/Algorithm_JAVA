@@ -2,24 +2,24 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner =  new Scanner(System.in);
-        int n = scanner.nextInt();
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
 
         System.out.println(divide(n));
     }
 
-    public static int divide(int n) {
-        int count = 0;
+    static int divide(int n) {
+        int fiveCount = n / 5;
 
-        while (n >= 0) {
-            if (n % 5 == 0) {
-                count += n / 5;
-                return count;
+        while(fiveCount >= 0) {
+            int remain = n -  (fiveCount * 5);
+
+            if(remain % 3 == 0) {
+                int threeCount = remain /3;
+                return threeCount + fiveCount;
             }
-            n -= 3;
-            count++;
+            fiveCount--;
         }
-
         return -1;
     }
 }
