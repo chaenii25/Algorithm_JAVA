@@ -1,28 +1,30 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
 
         int N = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
+        Map<Integer, Integer> map = new HashMap<>();
 
-        Map<Integer, Integer> cardMap = new HashMap<>();
         for (int i = 0; i < N; i++) {
-            int card = Integer.parseInt(st.nextToken());
-            cardMap.put(card, cardMap.getOrDefault(card, 0) + 1);
+            int num = Integer.parseInt(st.nextToken());
+            map.put(num, map.getOrDefault(num, 0) + 1);
         }
 
         int M = Integer.parseInt(br.readLine());
         st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < M; i++) {
-            int target = Integer.parseInt(st.nextToken());
-            sb.append(cardMap.getOrDefault(target, 0)).append(" ");
+            int num = Integer.parseInt(st.nextToken());
+            sb.append(map.getOrDefault(num, 0)).append(" ");
         }
 
-        System.out.println(sb);
+        System.out.println(sb.toString().trim());
     }
 }
